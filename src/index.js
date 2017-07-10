@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const name = 'nick';
@@ -27,6 +27,7 @@ const element_create=React.createElement(
 
 const element_create_2=<h2 classname="myname">mytest</h2>
 
+
 ///////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////
@@ -47,8 +48,59 @@ const element3 = <Welcome3 name = 'sara'/>;
 ///////////////////////////////////////////////
 
 
+
+
+
+
+function App() {
+    return (
+        <div>
+            <Welcome name="sara"/>
+            <Welcome name = "Cahal"/>
+            <Welcome name = 'nick'/>
+        </div>
+    );
+}
+
+
+class Clock extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {date : new Date()}    // every we call it . the time will change.
+    }
+    // these two methods called lifecycle hooks.
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({
+            date: new Date()
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+            </div>
+        );
+    }
+}
+
+
+
+
 ReactDOM.render(
-    element3,        // render an object to the index . id= root
+    <Clock />,        // render an object to the index . id= root
     document.getElementById('root')
 );
 
