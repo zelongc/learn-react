@@ -69,7 +69,7 @@ class Clock extends React.Component {
         this.state = {date : new Date()}    // every we call it . the time will change.
     }
     // these two methods called lifecycle hooks.
-    componentDidMount() {
+    componentDidMount() {    // this function is called every time after the render( )
         this.timerID = setInterval(
             () => this.tick(),
             1000
@@ -98,9 +98,56 @@ class Clock extends React.Component {
 
 
 
+class Toggle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+
+        // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+
+    render() {
+        return (
+            <a href="http://www.baidu.com">
+            <button onClick={this.handleClick}>
+                {this.state.isToggleOn ? 'yes' : 'no'}
+            </button> </a>
+        );
+    }
+}
+
+
+
+class CurrentTime extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={date: new Date().toLocaleString(),
+            name: 'zelongs'
+        }
+    }
+
+
+    render(){
+
+        return(
+            <div>
+                {this.state.name}
+                </div>
+        );
+    }
+
+}
 
 ReactDOM.render(
-    <Clock />,        // render an object to the index . id= root
+
+    <CurrentTime />,        // render an object to the index . id= root
     document.getElementById('root')
 );
 
