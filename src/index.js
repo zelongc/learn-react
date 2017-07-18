@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import App from './App.js';
 import registerServiceWorker from './registerServiceWorker';
 
 const name = 'nick';
@@ -50,17 +50,6 @@ const element3 = <Welcome3 name = 'sara'/>;
 
 
 
-
-
-function App() {
-    return (
-        <div>
-            <Welcome name="sara"/>
-            <Welcome name = "Cahal"/>
-            <Welcome name = 'nick'/>
-        </div>
-    );
-}
 
 
 class Clock extends React.Component {
@@ -133,7 +122,6 @@ class CurrentTime extends React.Component{
         }
     }
 
-
     render(){
 
         return(
@@ -145,9 +133,26 @@ class CurrentTime extends React.Component{
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ReactDOM.render(
 
-    <CurrentTime />,        // render an object to the index . id= root
+    <App />,        // render an object to the index . id= root
     document.getElementById('root')
 );
 

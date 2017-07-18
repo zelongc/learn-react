@@ -1,31 +1,45 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Todolist from './todo-list';
+import CreateTodo from './create-todo'
+const todos = [
 
-const object = (
+    {
+        task:'eat launch',
+        isCompleted:false
+    },
+    {
+        task:'eat dinner',
+        isCompleted:true
+    }
+];
 
-    <div className="App">
-        <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Double Trouble!</h2>
-        </div>
-        <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-    </div>
+export default class App extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            todos
+        };
+    }
 
-);
-
-
-
-
-
-class App extends Component {
-  render() {
+  render(){
     return (
-      object
+        <div>
+            <h1>this is my TO DO LIST</h1>
+            <CreateTodo createTask={this.createTask.bind(this)} />
+            <Todolist todos={this.state.todos} />
+        </div>
+
     );
-  }
+  };
+
+    createTask(task){
+      this.state.todos.push({
+          task,
+          isCompleted:false
+        });
+      this.setState({todos:this.state.todos});
+}
 }
 
-export default App;
+
