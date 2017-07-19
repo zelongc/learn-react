@@ -15,6 +15,7 @@ export default class CreateTodo extends React.Component {
     handleCreate(event){
         event.preventDefault();
         this.props.createTask(this.refs.createInput.value)
+        //this function  [createTask] is Passed from todo-list-item.
     }
 
     render(){
@@ -26,7 +27,6 @@ export default class CreateTodo extends React.Component {
                 <input type="text" placeholder="what do i need to do?" ref ='createInput'/>
                 <button >Save</button>
             </form>
-
 
         );
     };
